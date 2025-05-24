@@ -1,0 +1,218 @@
+body {
+    background: #000;
+    color: #fff;
+    margin-top: 100px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('../static/JosefinSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Si tu veux l'italique aussi */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('../static/JosefinSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+.bg-steel {
+    background-color: #111;
+}
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+  
+.site-header .navbar-nav .nav-link:hover {
+color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+font-weight: 500;
+}
+
+.card_small{
+    transition: all ease-in-out .5s;  
+}
+.card_small:hover{
+    transform: scale(1.1);
+}
+
+.card-header{
+    color: #000;
+}
+
+/**********************************************profile*******************************/
+.account-img{
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+  
+.account-heading{
+font-size: 2.5rem;
+}
+
+.media{
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    transition: all ease-in-out .5s;  
+}
+.media:hover{
+    transform: scale(1.1);
+}
+
+/******************************************card film****************************/
+.card-film a:hover{
+    text-decoration: none;
+}
+
+.film-detail h5{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.film-detail{
+    background-color: #fff;
+    color: #000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.film-detail img{
+    border-radius: 10px;
+}
+
+
+.film-detail-action p{
+    font-size: 30px;
+    transition: all ease-in-out .5s;
+}
+
+.film-detail-action{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+.film-detail-action p:hover{
+    color: red;
+}
+
+.empty_list{
+    display: flex;
+    justify-content: center;
+    font-size: 150px;
+}
+
+
+.film-favorite p{
+    font-size : 20px;
+}
+
+
+
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-theme-bg {
+    background: #121212;
+}
+
+.light-theme-bg {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.film-gradient {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    width: 100%;
+}
+
+.transform-on-hover {
+    transition: all 0.3s ease;
+}
+
+.transform-on-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.film-card:hover img {
+    transform: scale(1.05);
+}
+
+.film-card {
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.film-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.account-img {
+    transition: all 0.3s ease;
+}
+
+.account-img:hover {
+    transform: scale(1.05);
+}
+
+/* Style pour les formulaires crispy */
+.form-control:focus {
+    border-color: #0e0d0d;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.film-actions-bg {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+}
+
+.film-description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rounded-pill {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}

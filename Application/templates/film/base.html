@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="{% if request.session.theme == 'dark' %}dark{% else %}light{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="{% static 'film/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'film/main.css' %}">
+
+    <title>Netflix Formation</title>
+</head>
+<body class="{% if request.session.theme == 'dark' %}bg-dark text-white{% else %}bg-light text-dark{% endif %}">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md {% if request.session.theme == 'dark' %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %} fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="#">
+                    <img src="{% static 'film/netflix.png' %}" width="100" height="50" class="d-inline-block align-top" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                  <div class="navbar-nav me-auto">
+                      <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                         href="#">
+                          <i class="fas fa-home me-1"></i> Home
+                      </a>
+                      {% if user.is_authenticated %}
+                          <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                             href="#">
+                              <i class="fas fa-list me-1"></i> My List
+                          </a>
+                      {% endif %}
+                  </div>
+              
+                  <div class="navbar-nav">
+                      {% if user.is_authenticated %}
+                          {% if user.is_superuser %}
+                              <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                                 href="#">
+                                  <i class="fas fa-plus-circle me-1"></i> New Film
+                              </a>
+                          {% endif %}
+                          <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                             href="#">
+                              <i class="fas fa-user-circle me-1"></i> Profile
+                          </a>
+              
+                          <!-- Déconnexion via POST -->
+                          <form method="post" action="" style="display:inline;">
+                              {% csrf_token %}
+                              <button type="submit" class="nav-item nav-link btn p-2" style="color: inherit; text-decoration: none;">
+                                  <i class="fas fa-sign-out-alt me-1"></i> Logout
+                              </button>
+                          </form>
+                      {% else %}
+                          <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                             href="#">
+                              <i class="fas fa-sign-in-alt me-1"></i> Login
+                          </a>
+                          <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
+                             href="#">
+                              <i class="fas fa-user-plus me-1"></i> Register
+                          </a>
+                      {% endif %}
+              
+                      <!-- Thème -->
+                      {% if request.path != '/logout/' %}
+                      <form method="post" action="">
+                          {% csrf_token %}
+                          <button class="nav-item nav-link btn btn-link p-2" type="submit" style="color: inherit; border: none; background: transparent;">
+                              {% if request.session.theme == 'dark' %}
+                                  <i class="fas fa-moon me-1"></i> 
+                              {% else %}
+                                  <i class="fas fa-sun me-1"></i>
+                              {% endif %}
+                          </button>
+                      </form>
+                    {% endif %}
+                  
+                  </div>
+              </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5 pt-5">
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-{{ msg.tags }} {% if request.session.theme == 'dark' %}text-white bg-secondary border-0{% endif %}">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
