@@ -1,4 +1,71 @@
 {% extends "film/base.html" %}
-{% block content%}
-<p> Hello World ! {{params}} <p/>
-{% endblock content%}
+
+{% block content %}
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card mt-4 d-none d-md-block border-0 shadow-lg">
+            <div class="card-header bg-dark text-white text-uppercase font-weight-bold py-3" style="font-size: 1.2rem; letter-spacing: 1px;">
+                <i class="fas fa-star me-2" style="color: #ffc107;"></i> Films choisis pour vous
+            </div>
+            <div class="card-body bg-dark">
+                <div class="row row-cols-2 row-cols-md-4 g-4"> 
+                    {% for film in films_aleatoire %}
+                    <div class="col">
+                        <div class="card h-100 border-0 bg-transparent film-card transform-on-hover">
+                            <a href="#" class="text-decoration-none">
+                                <div class="position-relative overflow-hidden rounded-lg" style="height: 300px;">
+                                    <img class="img-fluid h-100 w-100 object-fit-cover" 
+                                         src="{{film.image.url}}" 
+                                         alt="image du film {{film.title}}">
+                                    <div class="card-img-overlay d-flex flex-column justify-content-end p-0">
+                                        <div class="film-gradient p-3">
+                                            <h5 class="card-title text-white mb-0">{{film.title}}</h5>
+                                            <div class="d-flex align-items-center mt-2">
+                                                <i class="fas fa-thumbs-up me-2 text-warning"></i>
+                                                <span class="text-white">4.5/5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>      
+                        </div>
+                    </div>
+                    {% endfor %}  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Films avec likes -->
+{% comment %} <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+    {% for film, like in film_likes %}
+    <div class="col">
+        <div class="card h-100 border-0 shadow-sm bg-dark text-white transform-on-hover">
+            <a href="{% url 'film-detail' film.id %}" class="text-decoration-none">
+                <div class="position-relative" style="height: 250px;">
+                    <img src="{{ film.image.url }}" 
+                         class="card-img-top h-100 w-100 object-fit-cover" 
+                         alt="Image du film {{ film.title }}">
+                    <div class="position-absolute top-0 end-0 m-2">
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-thumbs-up me-1"></i> {{ like }}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title mb-2">{{ film.title }}</h5>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-clock text-muted me-2"></i>
+                        <small class="text-muted">120 min</small>
+                    </div>
+                </div>
+            </a>
+        </div>               
+    </div>
+    {% endfor %}
+</div> {% endcomment %}
+{% endblock content %}
+
+

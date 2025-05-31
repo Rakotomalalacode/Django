@@ -33,12 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="navbar-nav me-auto">
                       <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                         href="#">
+                         href="{% url 'Hello' %}">
                           <i class="fas fa-home me-1"></i> Home
                       </a>
                       {% if user.is_authenticated %}
                           <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                             href="#">
+                             href="{% url "mylist" %}">
                               <i class="fas fa-list me-1"></i> My List
                           </a>
                       {% endif %}
@@ -48,12 +48,12 @@
                       {% if user.is_authenticated %}
                           {% if user.is_superuser %}
                               <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                                 href="#">
+                                 href="{% url 'newFilm' %}">
                                   <i class="fas fa-plus-circle me-1"></i> New Film
                               </a>
                           {% endif %}
                           <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                             href="#">
+                             href="{% url 'profile' %}">
                               <i class="fas fa-user-circle me-1"></i> Profile
                           </a>
               
@@ -66,18 +66,18 @@
                           </form>
                       {% else %}
                           <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                             href="#">
+                             href="{% url 'login' %}">
                               <i class="fas fa-sign-in-alt me-1"></i> Login
                           </a>
                           <a class="{% if request.session.theme == 'dark' %}nav-item nav-link text-white{% else %}nav-item nav-link text-dark{% endif %}" 
-                             href="#">
+                             href="{% url 'register' %}">
                               <i class="fas fa-user-plus me-1"></i> Register
                           </a>
                       {% endif %}
               
                       <!-- Thème -->
                       {% if request.path != '/logout/' %}
-                      <form method="post" action="">
+                      <form method="post" action="{% url "toggle_theme" %}">
                           {% csrf_token %}
                           <button class="nav-item nav-link btn btn-link p-2" type="submit" style="color: inherit; border: none; background: transparent;">
                               {% if request.session.theme == 'dark' %}

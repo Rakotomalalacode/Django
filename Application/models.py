@@ -7,7 +7,7 @@ class Film(models.Model):
     title = models.CharField(max_length = 50)
     description = models.TextField()
     image = models.ImageField(upload_to = 'film_pic')
-    likeur = models.ManyToManyField(User)
+    # likeur = models.ManyToManyField(User)
 
     def __str__(self):
         return self.title
